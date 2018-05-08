@@ -1,10 +1,10 @@
-@extends('common')
+@extends('Admin.common')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-success">
+            <div class="panel panel-info">
                 <div class="panel-heading">Register Admin</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
@@ -72,5 +72,25 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">Remove Admin</div>
+                <div class="panel-body">
+             <form class="form-horizontal" role="form" method="POST" action="{{ route('remove') }}">
+                        {{ csrf_field() }}
+                <select class="custom-select" id="admin" name="username">
+                <option disabled selected value> -- select an option -- </option>
+                @foreach($admins as $admin)
+                <option value="{{$admin->username}}">{{$admin->Name}}</option>
+                @endforeach
+            </select>
+                 <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+
 </div>
 @endsection

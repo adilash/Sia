@@ -16,7 +16,6 @@ class CreateQuestionpaperTable extends Migration
         Schema::create('QUESTIONPAPER', function (Blueprint $table) {
             $table->increments('qsid');
             $table->string('CourseID',8);
-            $table->integer('ProgrammeID')->unsigned();
 
             $table->integer('Year');
             $table->string('TestType',5);
@@ -25,7 +24,6 @@ class CreateQuestionpaperTable extends Migration
         Schema::table('QUESTIONPAPER',
             function(Blueprint $table
             ){
-            $table->foreign('ProgrammeID')->references('ProgrammeID')->on('PROGRAMME');
             $table->foreign('CourseID')->references('CourseID')->on('COURSE');
 
             });

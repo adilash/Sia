@@ -16,13 +16,13 @@ class CreateCourseTable extends Migration
         Schema::create('COURSE', function (Blueprint $table) {
             $table->string('CourseID',8)->primary();
             $table->string('CourseName',50);
-            $table->integer('DepartmentID')->unsigned();
+            $table->integer('ProgrammeID')->unsigned();
             
         });
         Schema::table('COURSE',
             function(Blueprint $table
             ){
-                $table->foreign('DepartmentID')->references('DepartmentID')->on('DEPARTMENT');
+                $table->foreign('ProgrammeID')->references('ProgrammeID')->on('PROGRAMME');
             });
     }
 

@@ -15,9 +15,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>-->
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+  <script src="{{asset('js/jquery.min.js')}}"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
         <!-- Styles -->
     </head>
@@ -26,16 +26,29 @@
          <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">SIA-NITC QUESTION BANK</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li class="active"><a href="{{route('queue')}}">Question Queue</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Database
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{route('MngDep')}}">Manage Department</a></li>
+          <li><a href="{{route('MngCrs')}}">Manage Course</a></li>
+          <li><a href="{{route('MngProg')}}">Manage Program</a></li>
+        </ul>
+      </li>
+      <li><a href="{{route('MngQB')}}">Manage Question Bank</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">{{Auth::guard('web_admins')->user()->Name}}
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="{{route('changepass')}}"><span class=""></span> Change Password</a></li>
+        <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>
 </nav>     

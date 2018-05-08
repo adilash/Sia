@@ -2,16 +2,16 @@ console.log(6);
 	
 	var dp="";
 	var pgm="";
-	hidedrop=function(x,y){
+	ahidedrop=function(x,y){
 		console.log(dp);
 		console.log(pgm);
 		$.each( y, function( key, value ) {
-			console.log("select#"+x+value);
- 		$("select#"+x+value).hide();
- 		$("select#"+x+value).val(0);
+			console.log("select#add"+x+value);
+ 		$("select#add"+x+value).hide();
+ 		$("select#add"+x+value).val(0);
  		console.log(value)	
  		});
-		$("select#year").hide();
+		$("select#ayear").hide();
 		$("select#year").val(0);
 		$("select#ttype").hide();
 		$("select#ttype").val(0);
@@ -20,18 +20,18 @@ console.log(6);
 			$("#filelnk").hide();
 		}
 	}
-	pgdrpdwn=function()
+	apgdrpdwn=function()
 	{
-		dp=$("select#dept").val()
+		dp=$("select#adddept").val()
 		if(pgm)
 		{
 			hidedrop(pgm,["Crs"]);
 		}
-		pgm=$("select#"+dp+"Pgm").val();
+		pgm=$("select#add"+dp+"Pgm").val();
 		console.log(dp+"pg");
-		$("select#"+pgm+"Crs").show();
+		$("select#add"+pgm+"Crs").show();
 	}
-	crsdrpdwn=function()
+	acrsdrpdwn=function()
 	{
 		$("select#year").show();
 		$("select#ttype").show();
@@ -43,16 +43,16 @@ console.log(6);
         $("select#"+dp+"Crs").show();
     });
     */
-    $("select#dept").on('change',function(){
+    $("select#adddept").on('change',function(){
     		if(dp)
     		{	
-    			$("select#"+dp+"Pgm").hide();
+    			$("select#add"+dp+"Pgm").hide();
 
     			hidedrop(pgm,["Crs"]);
 
     		}
         	dp=$(this).val();
-        $("select#"+dp+"Pgm").show();
+        $("select#add"+dp+"Pgm").show();
         console.log(dp);
         console.log(6);
     });

@@ -16,8 +16,7 @@ class CreateQueueTable extends Migration
         Schema::create('QUEUE', function (Blueprint $table) {
             $table->increments('qid');
             $table->string('CourseID',8);
-            $table->integer('ProgrammeID')->unsigned();
-
+        
             $table->integer('Year');
             $table->string('TestType',5);
             $table->string('link',75);
@@ -26,7 +25,6 @@ class CreateQueueTable extends Migration
         Schema::table('QUEUE',
             function(Blueprint $table
             ){
-            $table->foreign('ProgrammeID')->references('ProgrammeID')->on('PROGRAMME');
             $table->foreign('CourseID')->references('CourseID')->on('COURSE');
 
             });

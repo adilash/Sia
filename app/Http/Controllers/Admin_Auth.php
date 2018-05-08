@@ -9,7 +9,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class Admin_Auth extends Controller
 {
     //
+
     use AuthenticatesUsers;
+    protected $redirectPath = 'admin';
     protected $username='username';
     	protected function guard()
 	{

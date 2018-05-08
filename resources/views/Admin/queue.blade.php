@@ -1,9 +1,13 @@
-@extends('common')
+@extends('Admin.common')
 
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+			<div class="col-md-10 ">
+            <div class="panel panel-info">
+                <div class="panel-heading">Search Question Paper</div>
+                <div class="panel-body">
+		
 		<table class="table table-sm">
 		  <thead>
 		    <tr>
@@ -44,6 +48,15 @@
 		    @endforeach
 		  </tbody>
 		</table>
-	</div>
+	
+@if(Session::has('message'))
+    <div class="alert alert-info">
+      {{Session::get('message')}}
+    </div>
+@endif
+</div>
 	</div>
 </div>
+</div>
+</div>
+@endsection

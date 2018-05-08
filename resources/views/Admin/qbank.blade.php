@@ -1,13 +1,13 @@
-@extends('User.common')
+@extends('Admin.common')
 
 @section('content')
 <section class="container">
 	<div class="row">
-	        <div class="col-md-10 ">
+	<div class="col-md-10 ">
             <div class="panel panel-info">
                 <div class="panel-heading">Search Question Paper</div>
                 <div class="panel-body">
-		<form action="{{route('User')}}" method="POST">
+		<form action="{{route('MngQB')}}" method="POST">
 			{{ csrf_field() }}
 			<select class="custom-select" id="dept" name="Department">
 				<option disabled selected value> -- select an option -- </option>
@@ -47,11 +47,11 @@
 				@endfor
 			</select>
 			<script src="//www.townscript.com/organizer-popup-widget/townscript-organizer-widget.nocache.js" type="text/javascript"></script>
-			<button class="btn btn-primary" onclick="popup('fossmeet18')">Submit</button>
+			<button type="submit" class="btn btn-primary" onclick="popup('fossmeet18')">Submit</button>
+
 		</form>
-		@if(!$qitems->isEmpty())
-	<div class="row">
-		<div class="col-md-12">
+
+@if(!$qitems->isEmpty())
 		<table class="table table-sm">
 		  <thead>
 		    <tr>
@@ -72,24 +72,21 @@
 		      <td>{{$qitem->CourseName}}</td>
 		      <td>{{$qitem->Year}}</td>
 		      <td>{{$qitem->TestType}}</td>
-		      <td><a href="{{asset('storage/'.$qitem->link)}}">Link
+		      <td><a href="{{route('QB',['path'=>$qitem->link])}}" target="_blank">Link
 		      </a></td>
+		      <td><a href="{{route('delQB',['qsid' => $qitem->qsid])}}">Link
+		      </a><button type="submit" class="btn btn-primary">        Delete
+                                </button></td>
+		     </tr>
 
 		    @endforeach
 		  </tbody>
 		</table>
-	</div>
-	</div>
-	@else
-    <div class="alert alert-info">
-      No question papers matching query
-    </div>
 	@endif
-	</div>
 </div>
 </div>
 </div>
-
+</div>
 </section>
 @endsection
 
